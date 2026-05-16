@@ -16,15 +16,15 @@ public class Usuario {
     private String apellido;
     private String dni;
     private String telefono;
-    private String hummm;
+    private String contraseña;
 
-    public Usuario(int idRol, String nombre, String apellido, String dni, String telefono, String hummm) {
+    public Usuario(int idRol, String nombre, String apellido, String dni, String telefono, String contraseña) {
         this.idRol = idRol;
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
         this.telefono = telefono;
-        this.hummm = hummm;
+        this.contraseña = contraseña;
     }
 
     public Usuario(int idUser, int idRol, String nombre, String apellido, String dni, String telefono, String hummm) {
@@ -34,7 +34,7 @@ public class Usuario {
         this.apellido = apellido;
         this.dni = dni;
         this.telefono = telefono;
-        this.hummm = hummm;
+        this.contraseña = contraseña;
     }
 
     public int getIdUser() {
@@ -85,12 +85,12 @@ public class Usuario {
         this.telefono = telefono;
     }
 
-    public String getHummm() {
-        return hummm;
+    public String getContraseña() {
+        return contraseña;
     }
 
-    public void setHummm(String hummm) {
-        this.hummm = hummm;
+    public void setContraseña(String hummm) {
+        this.contraseña = contraseña;
     }
 
     @Override

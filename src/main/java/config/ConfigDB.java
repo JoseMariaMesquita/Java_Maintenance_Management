@@ -19,6 +19,12 @@ public class ConfigDB {
     private static final String usr = "root";
     private static final String passwd = "";
     
+    /**
+     * Estable Conexion con la base de datos
+     * 
+     * @return Conexion con la base de datos
+     * @throws DBException Excepcionde errores relacionados a la base de datos
+     */
     public static Connection connectDB() throws DBException{
     
         try {
@@ -28,6 +34,12 @@ public class ConfigDB {
         }
     }
     
+    /**
+     * 
+     * Cierrra la conexion con la base de datos
+     * 
+     * @throws DBException Excepcionde errores relacionados a la base de datos
+     */
     public static void closeDB() throws DBException{
         
         try {
