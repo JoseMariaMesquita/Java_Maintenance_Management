@@ -4,6 +4,10 @@
 
 package com.mycompany.proyectoglobal;
 
+import view.VentanaLogin;
+/*
+ToDo: Mejorar las gui al terminar el curso
+*/
 /**
  *
  * @author Usuario
@@ -11,6 +15,10 @@ package com.mycompany.proyectoglobal;
 public class ProyectoGlobal {
 
     public static void main(String[] args) {
+        
+        String asd = "case";
+        System.out.println(asd.hashCode());
+        VentanaLogin vL = new VentanaLogin();
         
     }
 }

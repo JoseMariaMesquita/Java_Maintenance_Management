@@ -57,7 +57,7 @@ public class TareaDAO {
         Connection conn = null;
         PreparedStatement pS = null;
         String sqlStatement = "DELETE FROM tareas WHERE id_tarea = ?";
-
+        
         try {
             conn = ConfigDB.connectDB();
 
