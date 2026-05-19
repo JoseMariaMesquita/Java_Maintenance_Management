@@ -28,7 +28,6 @@ public class VentanaPrincipalMantenimiento extends JFrame{
     //Botones
     private JButton btnCrearReporte = new JButton("Crear Reporte");
     private JButton btnListarReportes = new JButton("Listar Reportes");
-    private JButton btnListarTareas = new JButton("Listar Tareas");
     
     //Paneles
     private JPanel pnTitulo = new JPanel(new GridLayout(1, 2, 10, 10));
@@ -41,9 +40,9 @@ public class VentanaPrincipalMantenimiento extends JFrame{
     
     private void innit(){
         
-        this.setTitle("Login");
+        this.setTitle("Ventana Principal");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setLocationByPlatform(true);
+        this.setLocationRelativeTo(null);
         this.setLayout(new GridLayout(2, 1, 10, 10));
         
         this.lbTitulo.setFont(new Font("arial",Font.BOLD,15));
@@ -52,7 +51,6 @@ public class VentanaPrincipalMantenimiento extends JFrame{
         
         this.pnBotones.add(this.btnCrearReporte);
         this.pnBotones.add(this.btnListarReportes);
-        this.pnBotones.add(this.btnListarTareas);
         this.pnBotones.setBorder(new EmptyBorder(2,20,10,20));
         this.add(this.pnBotones);
         
@@ -65,7 +63,7 @@ public class VentanaPrincipalMantenimiento extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
-                VentanaCrearReporte vcr = new VentanaCrearReporte();
+                VentanaCrearReporte vcr = new VentanaCrearReporte(VentanaPrincipalMantenimiento.this);
             }
         });
         
@@ -73,18 +71,11 @@ public class VentanaPrincipalMantenimiento extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
-                VentanaListarReporte vlr = new VentanaListarReporte();
+                VentanaListarReporte vlr = new VentanaListarReporte(VentanaPrincipalMantenimiento.this);
             }
         });
         
-        this.btnListarTareas.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                setVisible(false);
-                VentanaListarTarea vlt = new VentanaListarTarea();
-            }
-        
-        });
+
         
     }
 }

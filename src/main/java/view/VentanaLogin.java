@@ -6,6 +6,7 @@ package view;
 
 import dao.UsuarioDAO;
 import entities.Usuario;
+import enums.Roles;
 import exceptions.DBException;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -55,7 +56,7 @@ public class VentanaLogin extends JFrame {
     private void innit() {
         this.setTitle("Login");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setLocationByPlatform(true);
+        this.setLocationRelativeTo(null);
         this.setLayout(new GridLayout(4, 1, 10, 10));
 
         this.lbTitulo.setFont(new Font("arial", Font.BOLD, 15));
@@ -103,9 +104,13 @@ public class VentanaLogin extends JFrame {
                             s = new Usuario(rS.getInt(1), rS.getInt(2), rS.getString(3), rS.getString(4), rS.getString(5), rS.getString(6), rS.getString(7));
                         }
                     }
-
+                    
                     if (s != null) {
-                        VentanaPrincipalMantenimiento vP = new VentanaPrincipalMantenimiento(s);
+                        if (s.getIdRol() == Roles.PersonalMantenimiento.idRol) {
+                            VentanaPrincipalMantenimiento vP = new VentanaPrincipalMantenimiento(s);
+                        } else if(s.getIdRol() == Roles.Managers.idRol){
+                            VentanaPrincipalManager vpm = new VentanaPrincipalManager(s);
+                        }
                         dispose();
                     } else {
                         tfDNI.setText("");

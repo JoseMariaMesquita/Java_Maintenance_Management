@@ -10,11 +10,11 @@ package enums;
  */
 public enum Roles {
     
-    Supervisores(0,"Supervisor"),
-    PersonalMantenimiento(1,"Mantenimiento");
+    Managers(1,"Manager"),
+    PersonalMantenimiento(2,"Mantenimiento");
     
-    int idRol;
-    String nombreRol;
+    public final int idRol;
+    public final String nombreRol;
     
     Roles(int idRol,String nombreRol){
         this.idRol = idRol;

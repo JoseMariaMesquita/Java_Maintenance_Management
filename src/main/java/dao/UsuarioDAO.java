@@ -40,7 +40,8 @@ public class UsuarioDAO {
             pS.setString(2, u.getNombre());
             pS.setString(3, u.getApellido());
             pS.setString(4, u.getDni());
-            pS.setString(5, u.getContraseña());
+            pS.setString(5, u.getTelefono());
+            pS.setString(6, u.getContraseña());
             pS.execute();
         } catch (SQLException ex) {
             throw new DBException("Error durante alta usuario: " + ex.getMessage());
@@ -141,6 +142,33 @@ public class UsuarioDAO {
             return false;
         } catch (SQLException ex) {
             throw new DBException("Error al buscar usuario: " + ex.getMessage());
+        } finally {
+            if (conn != null) {
+                ConfigDB.closeDB();
+            }
+        }
+    }
+
+    public static Usuario obtenerUsuario(int idUsuario) throws DBException, DatoNoEncontradoException {
+        Connection conn = null;
+        PreparedStatement pS = null;
+        ResultSet rS = null;
+        String sqlStatement = "SELECT * FROM usuarios WHERE id_usr = ?";
+
+        try {
+            conn = ConfigDB.connectDB();
+            pS = conn.prepareStatement(sqlStatement);
+            pS.setInt(1, idUsuario);
+            rS = pS.executeQuery();
+            Usuario u;
+            if (rS.next()) {
+                u = new Usuario(rS.getInt(1),rS.getInt(2),rS.getString(3),rS.getString(4),rS.getString(5),rS.getString(6),rS.getString(7));
+            } else {
+                throw new DatoNoEncontradoException("Usuario Inexistente");
+            }
+            return u;
+        } catch (SQLException ex) {
+            throw new DBException("Error al obtener usuario: " + ex.getMessage());
         } finally {
             if (conn != null) {
                 ConfigDB.closeDB();
